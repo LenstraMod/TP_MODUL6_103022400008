@@ -12,3 +12,18 @@ m1.IncreasePlayCount(2);
 
 m1.PrintTrackDetails();
 m2.PrintTrackDetails();
+
+//Debug Assertion
+//SayaMusicTrack m3 = new SayaMusicTrack("test");
+
+//m3.IncreasePlayCount(100000000);
+
+
+//Try Catch
+//for (int i = 0; i < 215; i++)
+//{
+//    m1.IncreasePlayCount(10000000);
+//}
+
+//m1.PrintTrackDetails();
+

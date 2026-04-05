@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace TP_MODUL6_103022400008
 {
     public class SayaMusicTrack {
@@ -8,6 +10,10 @@ namespace TP_MODUL6_103022400008
 
         public SayaMusicTrack(string title) 
         {
+
+            Debug.Assert(title != null , "Title tidak boleh kosong");
+            Debug.Assert(title.Length <= 100, "Title kepanjangan");
+
             Random rand = new Random();
             int randomNum = rand.Next(10000, 100000);
             this.id = randomNum;
@@ -18,9 +24,20 @@ namespace TP_MODUL6_103022400008
 
         public void IncreasePlayCount(int count) 
         {
+
+            Debug.Assert(count <= 10000000, "Tidak boleh lebih dari 10.000.000");
+
             int currentCount = int.Parse(this.count);
-            currentCount += count;
-            this.count = currentCount.ToString();
+            try {
+                checked {
+                    currentCount += count;
+                }
+
+                this.count = currentCount.ToString();
+            } catch (OverflowException e) {
+                Console.WriteLine("ERROR: MEMENUHI BATAS MAKSIMAL : " + e.ToString());
+            }
+            
         }
 
         public void PrintTrackDetails() {
